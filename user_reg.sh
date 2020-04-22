@@ -9,6 +9,8 @@ read -p "enter your email--" email
 email_pat="^([a-zA-Z])?[0-9]*[_\+\.0-9a-zA-Z]+[@][0-9a-zA-Z_\+\.]+[co|in|com|au]$"
 read -p "enter phone no ---" phone
 phone_pat="^((\+){1}91)[ ]{1}[1-9]{1}[0-9]{9}$"
+read -p "enter passwrd---" passwrd
+passwrd_pat="([a-z]|[A-Z]){8}"
 
 if [[ $first_name =~ $fname_pat ]];
 then
@@ -38,3 +40,9 @@ else
    echo "enter a valid phone number:"
 fi
 
+if [[ $passwrd =~ $passwrd_pat ]];
+then
+   echo "passwrd successfully registered:"
+else
+   echo "invalid passwrd:"
+fi
