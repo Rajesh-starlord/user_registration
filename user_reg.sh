@@ -1,16 +1,19 @@
 #! /bin/bash -x
-#validating user first name last name and email and phone no
+#validating user password-3
 
 read -p "enter First name---" first_name
 fname_pat="^([A-Z]{1}){3,}$"
 read -p "enter Last name---" Last_name
-Lname_pat="^([A-Z]{1,}){3,}"
+Lname_pat="^([A-Z]{1,}){3,}$"
 read -p "enter your email--" email
-email_pat="^([a-zA-Z])?[0-9]*[_\+\.0-9a-zA-Z]+[@][0-9a-zA-Z_\+\.]+[co|in|com|au]$"
+email_pat="^([a-zA-Z])*[_\+\.\-]*[0-9a-zA-Z]+[@][0-9a-zA-Z_\+\.]+[co|in|com|au]$"
 read -p "enter phone no ---" phone
 phone_pat="^((\+){1}91)[ ]{1}[1-9]{1}[0-9]{9}$"
 read -p "enter passwrd---" passwrd
-passwrd_pat="([A-Z]?[a-z]){8}"
+one_upper="[A-Z]+"
+char="[a-z]+"
+atleast_one_no="[0-9]+"
+no_of_char="${#passwrd}"
 
 if [[ $first_name =~ $fname_pat ]];
 then
@@ -40,7 +43,7 @@ else
    echo "enter a valid phone number:"
 fi
 
-if [[ $passwrd =~ $passwrd_pat ]];
+if [[ $no_of_char -ge 8 ]] && [[ $passwrd =~ $one_upper ]] && [[ $passwrd =~ $char ]] && [[ $passwrd =~ $atleast_one_no ]];
 then
    echo "passwrd successfully registered:"
 else
