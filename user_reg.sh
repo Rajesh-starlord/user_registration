@@ -14,7 +14,7 @@ one_upper="[A-Z]+"
 char="[a-z]+"
 atleast_one_no="[0-9]+"
 no_of_char="${#passwrd}"
-one_sp_char=`echo $passwrd | grep -o "\!\|\@\|\#\|\$\|\%\|\^\|\&\|\*]" | wc -l`
+one_sp_char=`echo $passwrd | grep -o "\!\|\@\|\#\|\$\|\%\|\^\|\&\|\*" | wc -l`
 
 if [[ $first_name =~ $fname_pat ]];
 then
@@ -29,6 +29,28 @@ then
 else
         echo "enter a valid Last name:"
 fi
+check_all_mails () {
+
+	declare -a emails
+	for((i=0;i<9;i++))
+	do
+   	emails[i]=`cat email.csv| awk '{if(NR==$i+1) print $0}'`
+	done
+	length=${#emails[@]}
+	echo $length
+	echo ${emails[@]}
+	for((j=0;j<$length;j++))
+	do
+   	if [[ ${emails[$j]} =~ $email_pat ]];
+   	then
+         echo "valid"
+   	else
+         echo "invalid"
+			return 1
+   	fi
+	done
+
+}
 
 if [[ $email =~ $email_pat ]];
 then
@@ -49,4 +71,13 @@ then
    echo "passwrd successfully registered:"
 else
    echo "invalid passwrd:"
+fi
+
+check_all_mails
+check_res=$?
+if [[ $check_res -eq 1 ]];
+then
+        echo "All emails are not valid:"
+else
+        echo "All mails are successfull validated:"
 fi
