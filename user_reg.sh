@@ -1,5 +1,5 @@
 #! /bin/bash -x
-#validating user password-3
+#validating user password-4
 
 read -p "enter First name---" first_name
 fname_pat="^([A-Z]{1}){3,}$"
@@ -14,6 +14,7 @@ one_upper="[A-Z]+"
 char="[a-z]+"
 atleast_one_no="[0-9]+"
 no_of_char="${#passwrd}"
+one_sp_char=`echo $passwrd | grep -o "\!\|\@\|\#\|\$\|\%\|\^\|\&\|\*]" | wc -l`
 
 if [[ $first_name =~ $fname_pat ]];
 then
@@ -43,7 +44,7 @@ else
    echo "enter a valid phone number:"
 fi
 
-if [[ $no_of_char -ge 8 ]] && [[ $passwrd =~ $one_upper ]] && [[ $passwrd =~ $char ]] && [[ $passwrd =~ $atleast_one_no ]];
+if [[ $no_of_char -ge 8 ]] && [[ $passwrd =~ $one_upper ]] && [[ $passwrd =~ $char ]] && [[ $passwrd =~ $atleast_one_no ]] && [[ $one_sp_char -eq 1 ]];
 then
    echo "passwrd successfully registered:"
 else
