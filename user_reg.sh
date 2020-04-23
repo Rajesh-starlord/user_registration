@@ -1,5 +1,5 @@
 #! /bin/bash -x
-#validating user first name last name and email and phone no
+#validating user first name last name and email and phone no and passwrd
 
 read -p "enter First name---" first_name
 fname_pat="^([A-Z]{1}){3,}$"
