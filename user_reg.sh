@@ -2,9 +2,9 @@
 #validating user password-4
 
 read -p "enter First name---" first_name
-fname_pat="^([A-Z]{1}){3,}$"
+fname_pat="^([A-Z]{1})+[a-z]{2,}$"
 read -p "enter Last name---" Last_name
-Lname_pat="^([A-Z]{1,}){3,}$"
+Lname_pat=""^([A-Z]{1})+[a-z]{2,}$
 read -p "enter your email--" email
 email_pat="^([a-zA-Z])*[_\+\.\-]*[0-9a-zA-Z]+[@][0-9a-zA-Z]+[_\+\.]+[co|in|com|au]$"
 read -p "enter phone no ---" phone
